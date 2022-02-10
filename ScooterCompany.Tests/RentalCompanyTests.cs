@@ -10,6 +10,7 @@ namespace ScooterCompany.Tests
         private IRentalCompany _target;
         private IScooterService _service;
         private string _defaultName = "Company";
+
         [SetUp]
         public void Setup()
         {

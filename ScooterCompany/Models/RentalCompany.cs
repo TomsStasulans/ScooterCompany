@@ -16,7 +16,7 @@ namespace ScooterCompany.Models
         public RentalCompany(string name, IScooterService service)
         {
             Name = name ?? throw new InvalidCompanyNameException();
-            service = _scooterService;
+            _scooterService = service;
         }
 
         public void StartRent(string id)
