@@ -161,19 +161,20 @@ namespace ScooterCompany.Tests
         }
 
         [Test]
-        public void EndRent_ScooterRentedFirstDay100minSecondDay50min_ShouldReturn30()
+        public void EndRent_ScooterRent_ShouldReturn30()
         {
             //Arrange
             var id = "2";
             var startRent = DateTime.UtcNow.AddDays(-1).AddMinutes(-50);
+            _scooterService.AddScooter(id, _defaultPrice);
+            _scooterService.GetScooterById(id).IsRented = true;
+
             _rentedScooters.Add(new RentedScooters
             {
                 Id = id,
                 RentStarted = startRent,
                 Price = _defaultPrice
             });
-            _scooterService.AddScooter(id, _defaultPrice);
-            _scooterService.GetScooterById(id).IsRented = true;
 
             //Act
             var result = _target.EndRent(id);
