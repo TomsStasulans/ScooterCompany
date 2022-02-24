@@ -159,28 +159,5 @@ namespace ScooterCompany.Tests
             //Assert
             Assert.AreEqual(20.0m, result);
         }
-
-        [Test]
-        public void EndRent_ScooterRent_ShouldReturn30()
-        {
-            //Arrange
-            var id = "2";
-            var startRent = DateTime.UtcNow.AddDays(-1).AddMinutes(-50);
-            _scooterService.AddScooter(id, _defaultPrice);
-            _scooterService.GetScooterById(id).IsRented = true;
-
-            _rentedScooters.Add(new RentedScooters
-            {
-                Id = id,
-                RentStarted = startRent,
-                Price = _defaultPrice
-            });
-
-            //Act
-            var result = _target.EndRent(id);
-
-            //Assert
-            Assert.AreEqual(30.0m, result);
-        }
     }
 }
